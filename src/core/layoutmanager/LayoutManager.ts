@@ -1,11 +1,16 @@
 /***
  * Computes the positions and dimensions of items that will be rendered by the list. The output from this is utilized by viewability tracker to compute the
  * lists of visible/hidden item.
+ * 计算列表将要渲染的项目的位置和尺寸。这些输出将被可视性追踪器用来计算可见/隐藏项目的列表。
  */
+/** 导入布局提供者和尺寸接口 */
 import { Dimension, LayoutProvider } from "../dependencies/LayoutProvider";
+/** 导入自定义错误类 */
 import CustomError from "../exceptions/CustomError";
 
+/** 布局管理器抽象基类 */
 export abstract class LayoutManager {
+    /** 获取指定索引项的偏移位置 */
     public getOffsetForIndex(index: number): Point {
         const layouts = this.getLayouts();
         if (layouts.length > index) {
@@ -19,11 +24,13 @@ export abstract class LayoutManager {
     }
 
     //You can ovveride this incase you want to override style in some cases e.g, say you want to enfore width but not height
+    //你可以在某些情况下重写此方法来覆盖样式，例如，你想要强制设置宽度但不设置高度
     public getStyleOverridesForIndex(index: number): object | undefined {
         return undefined;
     }
 
     //Removes item at the specified index
+    //移除指定索引处的项目
     public removeLayout(index: number): void {
         const layouts = this.getLayouts();
         if (index < layouts.length) {
@@ -37,9 +44,11 @@ export abstract class LayoutManager {
     }
 
     //Return the dimension of entire content inside the list
+    //返回列表内所有内容的总尺寸
     public abstract getContentDimension(): Dimension;
 
     //Return all computed layouts as an array, frequently called, you are expected to return a cached array. Don't compute here.
+    //返回所有计算好的布局数组，经常被调用，你应该返回缓存的数组，不要在这里计算
     public abstract getLayouts(): Layout[];
 
     //RLV will call this method in case of mismatch with actual rendered dimensions in case of non deterministic rendering
@@ -47,9 +56,14 @@ export abstract class LayoutManager {
     //No need to relayout which RLV will trigger. You should only relayout when relayoutFromIndex is called.
     //Layout managers can choose to ignore the override requests like in case of grid layout where width changes
     //can be ignored for a vertical layout given it gets computed via the given column span.
+    //当实际渲染尺寸与非确定性渲染的预期不匹配时，RLV 将调用此方法
+    //你应该缓存这个值并优先使用它，而不是提供的估计值
+    //无需重新布局，RLV 会触发重新布局。你只应在调用 relayoutFromIndex 时重新布局
+    //布局管理器可以选择忽略覆盖请求，例如在网格布局中，给定列跨度计算的宽度变化可以被垂直布局忽略
     public abstract overrideLayout(index: number, dim: Dimension): boolean;
 
     //Recompute layouts from given index, compute heavy stuff should be here
+    //从给定索引重新计算布局，计算量大的操作应该在这里进行
     public abstract relayoutFromIndex(startIndex: number, itemCount: number): void;
 }
 
