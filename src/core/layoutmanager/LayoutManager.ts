@@ -7,7 +7,7 @@
 import { Dimension } from "../dependencies/LayoutProvider";
 /** 导入自定义错误类 */
 import CustomError from "../exceptions/CustomError";
-import { LayoutListener } from "./LayoutListenerManager";
+import { LayoutListener } from "./LayoutListener";
 
 /** 布局管理器抽象基类 */
 export abstract class LayoutManager {

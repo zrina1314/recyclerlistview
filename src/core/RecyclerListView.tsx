@@ -60,7 +60,7 @@ import ScrollComponent from "../platform/reactnative/scrollcomponent/ScrollCompo
 import ViewRenderer from "../platform/reactnative/viewrenderer/ViewRenderer";
 import { DefaultJSItemAnimator as DefaultItemAnimator } from "../platform/reactnative/itemanimators/defaultjsanimator/DefaultJSItemAnimator";
 import { Platform, ScrollView } from "react-native";
-import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
+import { LayoutListener } from "./layoutmanager/LayoutListener";
 const IS_WEB = !Platform || Platform.OS === "web";
 //#endif
 
@@ -73,7 +73,7 @@ const IS_WEB = !Platform || Platform.OS === "web";
 //import ScrollComponent from "../platform/web/scrollcomponent/ScrollComponent";
 //import ViewRenderer from "../platform/web/viewrenderer/ViewRenderer";
 //import { DefaultWebItemAnimator as DefaultItemAnimator } from "../platform/web/itemanimators/DefaultWebItemAnimator";
-//import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
+//import { LayoutListener } from "./layoutmanager/LayoutListener";
 //const IS_WEB = true;
 //type ScrollView = unknown;
 //#endif

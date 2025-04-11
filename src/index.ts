@@ -9,6 +9,7 @@ import { AutoScroll } from "./utils/AutoScroll";
 import { Layout, LayoutManager, Point } from "./core/layoutmanager/LayoutManager";
 import { WrapGridLayoutManager } from "./core/layoutmanager/WrapGridLayoutManager";
 import { GridLayoutManager } from "./core/layoutmanager/GridLayoutManager";
+import { LayoutListener } from "./core/layoutmanager/LayoutListener";
 import ProgressiveListView from "./core/ProgressiveListView";
 import { DebugHandlers } from "./core/devutils/debughandlers/DebugHandlers";
 import { ComponentCompat } from "./utils/ComponentCompat";
@@ -38,4 +39,5 @@ export {
     ComponentCompat,
     WindowCorrection,
     WindowCorrectionConfig,
+    LayoutListener,
 };

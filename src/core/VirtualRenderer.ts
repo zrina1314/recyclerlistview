@@ -7,7 +7,7 @@ import ViewabilityTracker, { TOnItemStatusChanged, WindowCorrection } from "./Vi
 import { ObjectUtil, Default } from "ts-object-utils";
 import TSCast from "../utils/TSCast";
 import { BaseDataProvider } from "./dependencies/DataProvider";
-import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
+import { LayoutListener } from "./layoutmanager/LayoutListener";
 
 /**
  * Renderer which keeps track of recyclable items and the currently rendered items.
