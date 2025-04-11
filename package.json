@@ -1,6 +1,6 @@
 {
-  "name": "@zrina1314/recyclerlistview",
-  "version": "4.2.2-beta.1",
+  "name": "recyclerlistview-gaw",
+  "version": "4.2.3",
   "description": "The listview that you need and deserve. It was built for performance, uses cell recycling to achieve smooth scrolling.",
   "main": "dist/reactnative/index.js",
   "types": "dist/reactnative/index.d.ts",
@@ -39,8 +39,8 @@
     "ts-object-utils": "0.0.5"
   },
   "peerDependencies": {
-    "react": ">= 15.2.1",
-    "react-native": ">= 0.30.0"
+    "react": ">= 16.4.7",
+    "react-native": ">= 0.49.5"
   },
   "devDependencies": {
     "@types/lodash.debounce": "4.0.8",
