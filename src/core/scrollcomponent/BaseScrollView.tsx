@@ -41,7 +41,7 @@ export interface ScrollEvent {
 
 /** 基础滚动视图抽象类 */
 export default abstract class BaseScrollView extends React.Component<ScrollViewDefaultProps, {}> {
-    /** 
+    /**
      * 构造函数
      * @param props 组件属性
      */
@@ -49,7 +49,7 @@ export default abstract class BaseScrollView extends React.Component<ScrollViewD
         super(props);
     }
 
-    /** 
+    /**
      * 滚动到指定位置的抽象方法
      * @param scrollInput 滚动输入参数，包含目标位置和是否使用动画
      */

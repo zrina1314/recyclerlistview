@@ -33,9 +33,9 @@ export interface StableIdMapItem {
 /**
  * 渲染堆栈接口，以键值对形式存储渲染项
  */
-export interface RenderStack { 
+export interface RenderStack {
     /** 渲染项，键为字符串，值为 RenderStackItem 类型 */
-    [key: string]: RenderStackItem; 
+    [key: string]: RenderStackItem;
 }
 
 /**
@@ -123,7 +123,7 @@ export default class VirtualRenderer {
 
         this._fetchStableId = fetchStableId;
 
-        // Keeps track of keys of all the currently rendered indexes, 
+        // Keeps track of keys of all the currently rendered indexes,
         // can eventually replace renderStack as well if no new use cases come up
         // 跟踪所有当前渲染索引的键，如果没有新的用例出现，最终也可以取代 renderStack
         this._stableIdToRenderKeyMap = {};
@@ -553,7 +553,7 @@ export default class VirtualRenderer {
                 disengagedIndex = notNow[i];
                 delete this._engagedIndexes[disengagedIndex];
                 if (this._params && disengagedIndex < this._params.itemCount) {
-                    // All the items which are now not visible can go to the recycle pool, 
+                    // All the items which are now not visible can go to the recycle pool,
                     // the pool only needs to maintain keys since
                     // react can link a view to a key automatically
                     // 所有现在不可见的项都可以放入回收池，回收池只需要维护键，因为 React 可以自动将视图与键关联起来

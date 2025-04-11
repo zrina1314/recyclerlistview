@@ -12,7 +12,7 @@ import { ComponentCompat } from "../../utils/ComponentCompat";
  * Also enforces a logic to prevent re renders. RecyclerListView keeps moving these ViewRendereres around using transforms to enable recycling.
  * View renderer will only update if its position, dimensions or given data changes. Make sure to have a relevant shouldComponentUpdate as well.
  * This is second of the two things recycler works on. Implemented both for web and react native.
- * 
+ *
  * 视图渲染器负责创建一个由布局提供者指定大小的容器，并在其中渲染内容。
  * 同时强制执行防止重复渲染的逻辑。RecyclerListView 通过变换来移动这些视图渲染器以实现回收。
  * 视图渲染器仅在其位置、尺寸或给定数据发生变化时才会更新。请确保也有相关的 shouldComponentUpdate。
@@ -68,7 +68,7 @@ export default abstract class BaseViewRenderer<T> extends ComponentCompat<ViewRe
     /** 动画器样式覆盖对象 */
     protected animatorStyleOverrides: object | undefined;
 
-    /** 
+    /**
      * 组件是否应该更新
      * @param newProps 新的属性
      */

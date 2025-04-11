@@ -73,6 +73,7 @@ const IS_WEB = !Platform || Platform.OS === "web";
 //import ScrollComponent from "../platform/web/scrollcomponent/ScrollComponent";
 //import ViewRenderer from "../platform/web/viewrenderer/ViewRenderer";
 //import { DefaultWebItemAnimator as DefaultItemAnimator } from "../platform/web/itemanimators/DefaultWebItemAnimator";
+//import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
 //const IS_WEB = true;
 //type ScrollView = unknown;
 //#endif
@@ -114,75 +115,75 @@ export interface OnRecreateParams {
  * RecyclerListView 的属性接口
  */
 export interface RecyclerListViewProps {
-    /** 布局提供者，用于定义列表项的布局 */ 
+    /** 布局提供者，用于定义列表项的布局 */
     layoutProvider: BaseLayoutProvider;
-    /** 数据提供者，用于提供列表的数据 */ 
+    /** 数据提供者，用于提供列表的数据 */
     dataProvider: BaseDataProvider;
-    /** 行渲染器，用于渲染列表项 */ 
+    /** 行渲染器，用于渲染列表项 */
     rowRenderer: (type: string | number, data: any, index: number, extendedState?: object) => JSX.Element | JSX.Element[] | null;
-    /** 上下文提供者，用于保存和恢复滚动位置等信息 */ 
+    /** 上下文提供者，用于保存和恢复滚动位置等信息 */
     contextProvider?: ContextProvider;
-    /** 预渲染偏移量，指定提前渲染的像素数 */ 
+    /** 预渲染偏移量，指定提前渲染的像素数 */
     renderAheadOffset?: number;
-    /** 是否为水平滚动列表 */ 
+    /** 是否为水平滚动列表 */
     isHorizontal?: boolean;
-    /** 滚动事件回调函数 */ 
+    /** 滚动事件回调函数 */
     onScroll?: (rawEvent: ScrollEvent, offsetX: number, offsetY: number) => void;
-    /** 重新创建列表时的回调函数 */ 
+    /** 重新创建列表时的回调函数 */
     onRecreate?: (params: OnRecreateParams) => void;
-    /** 滚动到底部时的回调函数 */ 
+    /** 滚动到底部时的回调函数 */
     onEndReached?: () => void;
-    /** 滚动到底部的阈值（像素） */ 
+    /** 滚动到底部的阈值（像素） */
     onEndReachedThreshold?: number;
-    /** 滚动到底部的相对阈值（相对于可见列表长度） */ 
+    /** 滚动到底部的相对阈值（相对于可见列表长度） */
     onEndReachedThresholdRelative?: number;
-    /** 可见索引变化的回调函数 */ 
+    /** 可见索引变化的回调函数 */
     onVisibleIndexesChanged?: TOnItemStatusChanged;
-    /** 可见索引变化的回调函数 */ 
+    /** 可见索引变化的回调函数 */
     onVisibleIndicesChanged?: TOnItemStatusChanged;
-    /** 渲染页脚的函数 */ 
+    /** 渲染页脚的函数 */
     renderFooter?: () => JSX.Element | JSX.Element[] | null;
-    /** 外部滚动视图组件 */ 
+    /** 外部滚动视图组件 */
     externalScrollView?: { new(props: ScrollViewDefaultProps): BaseScrollView };
-    /** 列表的布局尺寸 */ 
+    /** 列表的布局尺寸 */
     layoutSize?: Dimension;
-    /** 初始滚动偏移量 */ 
+    /** 初始滚动偏移量 */
     initialOffset?: number;
-    /** 初始渲染索引 */ 
+    /** 初始渲染索引 */
     initialRenderIndex?: number;
-    /** 滚动节流时间（iOS 专用） */ 
+    /** 滚动节流时间（iOS 专用） */
     scrollThrottle?: number;
-    /** 是否允许列表大小改变 */ 
+    /** 是否允许列表大小改变 */
     canChangeSize?: boolean;
-    /** 是否使用窗口滚动（Web 专用） */ 
+    /** 是否使用窗口滚动（Web 专用） */
     useWindowScroll?: boolean;
-    /** 是否禁用回收机制 */ 
+    /** 是否禁用回收机制 */
     disableRecycling?: boolean;
-    /** 是否强制非确定性渲染 */ 
+    /** 是否强制非确定性渲染 */
     forceNonDeterministicRendering?: boolean;
-    /** 扩展状态对象，用于传递额外的状态信息 */ 
+    /** 扩展状态对象，用于传递额外的状态信息 */
     extendedState?: object;
-    /** 项目动画器，用于实现列表项的动画效果 */ 
+    /** 项目动画器，用于实现列表项的动画效果 */
     itemAnimator?: ItemAnimator;
-    /** 是否优化插入和删除动画 */ 
+    /** 是否优化插入和删除动画 */
     optimizeForInsertDeleteAnimations?: boolean;
-    /** 样式 */ 
+    /** 样式 */
     style?: object | number;
-    /** 调试处理函数 */ 
+    /** 调试处理函数 */
     debugHandlers?: DebugHandlers;
-    /** 渲染内容容器的函数 */ 
+    /** 渲染内容容器的函数 */
     renderContentContainer?: (props?: object, children?: React.ReactNode) => React.ReactNode | null;
-    /** 渲染项目容器的函数 */ 
+    /** 渲染项目容器的函数 */
     renderItemContainer?: (props: object, parentProps: object, children?: React.ReactNode) => React.ReactNode;
     //For all props that need to be proxied to inner/external scrollview. Put them in an object and they'll be spread
     //and passed down. For better typescript support.
-    /** 传递给内部/外部滚动视图的属性对象 */ 
+    /** 传递给内部/外部滚动视图的属性对象 */
     scrollViewProps?: object;
-    /** 应用窗口校正的函数 */ 
+    /** 应用窗口校正的函数 */
     applyWindowCorrection?: (offsetX: number, offsetY: number, windowCorrection: WindowCorrection) => void;
-    /** 项目布局回调函数 */ 
+    /** 项目布局回调函数 */
     onItemLayout?: (index: number) => void;
-    /** 窗口校正配置对象 */ 
+    /** 窗口校正配置对象 */
     windowCorrectionConfig?: { value?: WindowCorrection, applyToInitialOffset?: boolean, applyToItemScroll?: boolean };
 
     //This can lead to inconsistent behavior. Use with caution.
@@ -195,17 +196,16 @@ export interface RecyclerListViewProps {
      */
     suppressBoundedSizeException?: boolean;
 
-
-    layoutListener?:LayoutListener;
+    layoutListener?: LayoutListener;
 }
 
 /**
  * RecyclerListView 的状态接口
  */
 export interface RecyclerListViewState {
-    /** 渲染堆栈，包含要渲染的项目信息 */ 
+    /** 渲染堆栈，包含要渲染的项目信息 */
     renderStack: RenderStack;
-    /** 内部快照，用于保存状态信息 */ 
+    /** 内部快照，用于保存状态信息 */
     internalSnapshot: Record<string, object>;
 }
 
@@ -213,11 +213,11 @@ export interface RecyclerListViewState {
  * 窗口校正配置接口
  */
 export interface WindowCorrectionConfig {
-    /** 窗口校正值 */ 
+    /** 窗口校正值 */
     value: WindowCorrection;
-    /** 是否应用于初始偏移量 */ 
+    /** 是否应用于初始偏移量 */
     applyToInitialOffset: boolean;
-    /** 是否应用于项目滚动 */ 
+    /** 是否应用于项目滚动 */
     applyToItemScroll: boolean;
 }
 
@@ -227,70 +227,70 @@ export interface WindowCorrectionConfig {
 export default class RecyclerListView<P extends RecyclerListViewProps, S extends RecyclerListViewState> extends ComponentCompat<P, S> {
     // 默认属性
     public static defaultProps = {
-        /** 是否允许列表大小改变 */ 
+        /** 是否允许列表大小改变 */
         canChangeSize: false,
-        /** 是否禁用回收机制 */ 
+        /** 是否禁用回收机制 */
         disableRecycling: false,
-        /** 初始滚动偏移量 */ 
+        /** 初始滚动偏移量 */
         initialOffset: 0,
-        /** 初始渲染索引 */ 
+        /** 初始渲染索引 */
         initialRenderIndex: 0,
-        /** 是否为水平滚动列表 */ 
+        /** 是否为水平滚动列表 */
         isHorizontal: false,
-        /** 滚动到底部的阈值（像素） */ 
+        /** 滚动到底部的阈值（像素） */
         onEndReachedThreshold: 0,
-        /** 滚动到底部的相对阈值（相对于可见列表长度） */ 
+        /** 滚动到底部的相对阈值（相对于可见列表长度） */
         onEndReachedThresholdRelative: 0,
-        /** 预渲染偏移量 */ 
+        /** 预渲染偏移量 */
         renderAheadOffset: IS_WEB ? 1000 : 250,
     };
 
     // 属性类型定义
     public static propTypes = {};
 
-    /** 刷新请求防抖函数 */ 
+    /** 刷新请求防抖函数 */
     private refreshRequestDebouncer = debounce((executable: () => void) => {
         executable();
     });
 
-    /** 虚拟渲染器实例 */ 
+    /** 虚拟渲染器实例 */
     private _virtualRenderer: VirtualRenderer;
-    /** 滚动到底部回调是否已调用 */ 
+    /** 滚动到底部回调是否已调用 */
     private _onEndReachedCalled = false;
-    /** 初始化是否完成 */ 
+    /** 初始化是否完成 */
     private _initComplete = false;
-    /** 组件是否已挂载 */ 
+    /** 组件是否已挂载 */
     private _isMounted = true;
-    /** 重新布局请求索引 */ 
+    /** 重新布局请求索引 */
     private _relayoutReqIndex: number = -1;
-    /** 渲染堆栈参数 */ 
+    /** 渲染堆栈参数 */
     private _params: RenderStackParams = {
-        /** 初始滚动偏移量 */ 
+        /** 初始滚动偏移量 */
         initialOffset: 0,
-        /** 初始渲染索引 */ 
+        /** 初始渲染索引 */
         initialRenderIndex: 0,
-        /** 是否为水平滚动列表 */ 
+        /** 是否为水平滚动列表 */
         isHorizontal: false,
-        /** 项目数量 */ 
+        /** 项目数量 */
         itemCount: 0,
-        /** 预渲染偏移量 */ 
+        /** 预渲染偏移量 */
         renderAheadOffset: 250,
     };
-    /** 布局尺寸 */ 
+    /** 布局尺寸 */
     private _layout: Dimension = { height: 0, width: 0 };
-    /** 待处理的滚动偏移量 */ 
+    /** 待处理的滚动偏移量 */
     private _pendingScrollToOffset: Point | null = null;
-    /** 待处理的渲染堆栈 */ 
+    /** 待处理的渲染堆栈 */
     private _pendingRenderStack?: RenderStack;
-    /** 临时布局尺寸 */ 
+    /** 临时布局尺寸 */
     private _tempDim: Dimension = { height: 0, width: 0 };
-    /** 初始滚动偏移量 */ 
+    /** 初始滚动偏移量 */
     private _initialOffset = 0;
-    /** 缓存的布局信息 */ 
+    /** 缓存的布局信息 */
     private _cachedLayouts?: Layout[];
-    /** 滚动组件实例 */ 
+    /** 滚动组件实例 */
     private _scrollComponent: BaseScrollComponent | null = null;
-    /** 窗口校正配置 */ 
+    /** 窗口校正配置 */
     private _windowCorrectionConfig: WindowCorrectionConfig;
 
     //If the native content container is used, then positions of the list items are changed on the native side. The animated library used
@@ -318,7 +318,7 @@ export default class RecyclerListView<P extends RecyclerListViewProps, S extends
         }, (index) => {
             return this.props.dataProvider.getStableId(index);
         }, !props.disableRecycling,
-        this.props.layoutListener?this.props.layoutListener:null);
+        this.props.layoutListener ? this.props.layoutListener : null );
 
         // 处理窗口校正配置
         if (this.props.windowCorrectionConfig) {

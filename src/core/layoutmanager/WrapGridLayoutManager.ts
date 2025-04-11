@@ -65,11 +65,10 @@ export class WrapGridLayoutManager extends LayoutManager {
     }
 
     /**
-
-          * 当调用 removeLayout 时，会从布局数组中移除指定索引的布局。
+     * 当调用 removeLayout 时，会从布局数组中移除指定索引的布局。
      * 如果布局数组为空，会将总高度和总宽度重置为 0。
      * @param index 要移除的布局的索引。
-    * when remove layout is called, it will remove the layout from the layouts array
+     * when remove layout is called, it will remove the layout from the layouts array
      * and if the layouts array is empty, it will reset the total height and total width to 0
      * @param index
      */

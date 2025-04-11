@@ -318,7 +318,7 @@ export default abstract class StickyObject<P extends StickyObjectProps> extends 
         return null;
     }
 
-    /** 
+    /**
      * 私有方法：获取调整后的Y轴偏移量
      * @param offsetY 原始Y轴偏移量
      */

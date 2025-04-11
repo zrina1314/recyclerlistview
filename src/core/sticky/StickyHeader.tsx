@@ -17,7 +17,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         super(props, context);
     }
 
-    /** 
+    /**
      * 滚动事件处理方法
      * @param offsetY 垂直偏移量
      */
@@ -43,7 +43,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         this.bounceScrolling = true;
     }
 
-    /** 
+    /**
      * 计算可见的粘性索引
      * @param stickyIndices 粘性索引数组
      * @param smallestVisibleIndex 最小可见索引
@@ -70,7 +70,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         }
     }
 
-    /** 
+    /**
      * 获取下一个Y轴距离
      * @param nextY 下一个Y坐标
      * @param nextHeight 下一个高度
@@ -79,7 +79,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         return nextY;
     }
 
-    /** 
+    /**
      * 获取当前Y轴距离
      * @param currentY 当前Y坐标
      * @param currentHeight 当前高度
@@ -88,7 +88,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         return currentY;
     }
 
-    /** 
+    /**
      * 获取滚动Y轴位置
      * @param offsetY 垂直偏移量
      * @param scrollableHeight 可滚动高度
@@ -97,7 +97,7 @@ export default class StickyHeader<P extends StickyObjectProps> extends StickyObj
         return offsetY;
     }
 
-    /** 
+    /**
      * 判断是否到达边界
      * @param offsetY 垂直偏移量
      * @param _windowBound 窗口边界

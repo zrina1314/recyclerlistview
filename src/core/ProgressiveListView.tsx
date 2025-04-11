@@ -11,7 +11,7 @@ export interface ProgressiveListViewProps extends RecyclerListViewProps {
     /**
      * A smaller final value can help in building up recycler pool in advance. This is only used if there is a valid updated cycle.
      * e.g, if maxRenderAhead is 0 then there will be no cycle and final value will be unused
-     * 
+     *
      * 较小的最终值可以帮助提前建立回收池。这仅在有有效的更新周期时使用。
      * 例如，如果 maxRenderAhead 为 0，则不会有周期，最终值将不会被使用
      */
@@ -24,7 +24,7 @@ export interface ProgressiveListViewProps extends RecyclerListViewProps {
  * renderAheadStep = amount of increment made on each frame
  * maxRenderAhead = maximum value for render ahead at the end of update cycle
  * finalRenderAheadOffset = value to set after whole update cycle is completed. If undefined, final offset value will be equal to maxRenderAhead
- * 
+ *
  * 这将逐步更新渲染提前距离并渐进式地渲染页面。
  * renderAheadOffset = 将要递增的初始值
  * renderAheadStep = 每帧增加的数量
@@ -59,7 +59,7 @@ export default class ProgressiveListView extends RecyclerListView<ProgressiveLis
         super.componentWillUnmount();
     }
 
-    /** 
+    /**
      * 项目布局完成时的处理方法
      * @param index 项目索引
      */
@@ -73,7 +73,7 @@ export default class ProgressiveListView extends RecyclerListView<ProgressiveLis
         super.onItemLayout(index);
     }
 
-    /** 
+    /**
      * 渐进式更新渲染提前量
      * @param newVal 新的渲染提前值
      */

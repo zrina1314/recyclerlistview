@@ -41,7 +41,7 @@ export interface ScrollComponentProps {
 
 /** 基础滚动组件抽象类 */
 export default abstract class BaseScrollComponent extends React.Component<ScrollComponentProps, {}> {
-    /** 
+    /**
      * 滚动到指定位置的抽象方法
      * @param x 水平偏移量
      * @param y 垂直偏移量

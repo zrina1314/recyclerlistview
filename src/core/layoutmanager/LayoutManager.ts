@@ -30,12 +30,12 @@ export abstract class LayoutManager {
     /**
      * 你可以在某些情况下重写此方法来覆盖样式，例如，你想要强制设置宽度但不设置高度
      * @description You can ovveride this incase you want to override style in some cases e.g, say you want to enfore width but not height
-    */
+     */
     public getStyleOverridesForIndex(index: number): object | undefined {
         return undefined;
     }
 
-    /** 
+    /**
      * 移除指定索引处的项目
      * @description Removes item at the specified index
      */
@@ -63,8 +63,6 @@ export abstract class LayoutManager {
      */
     public abstract getLayouts(): Layout[];
 
-
-
     /**
      * 当实际渲染尺寸与非确定性渲染的预期不匹配时，RLV 将调用此方法
      * @description 你应该缓存这个值并优先使用它，而不是提供的估计值
@@ -75,22 +73,22 @@ export abstract class LayoutManager {
      * No need to relayout which RLV will trigger. You should only relayout when relayoutFromIndex is called.
      * Layout managers can choose to ignore the override requests like in case of grid layout where width changes
      * can be ignored for a vertical layout given it gets computed via the given column span.
-     * @param index 
-     * @param dim 
+     * @param index
+     * @param dim
      */
     public abstract overrideLayout(index: number, dim: Dimension): boolean;
 
-    /** 
+    /**
      * 从给定索引重新计算布局，计算量大的操作应该在这里进行
      * @description Recompute layouts from given index, compute heavy stuff should be here
      */
     public abstract relayoutFromIndex(startIndex: number, itemCount: number): void;
 
     public  setLayoutListener(listener: LayoutListener|null): void {
-        this.layoutListener = listener; 
+        this.layoutListener = listener;
     }
 }
- 
+
 /**
  * 布局接口，继承自 Dimension 和 Point 接口，包含布局的尺寸、坐标、是否覆盖和类型信息。
  */

@@ -20,8 +20,7 @@ export default abstract class ContextProvider {
     /**
      * 保存值
      * 让 RecyclerListView 保存一个值，可以使用 sessionStorage/asyncStorage 等存储 API
-     * 
-     * Let recycler view save a value, you can use apis like session storage/async storage here
+     * @description Let recycler view save a value, you can use apis like session storage/async storage here
      * @param key 键名
      * @param value 要保存的值（字符串或数字）
      */
@@ -30,7 +29,7 @@ export default abstract class ContextProvider {
     /**
      * 获取值
      * 根据键名获取对应的值
-     * 
+     *
      * Get value for a key
      * @param key 键名
      * @returns 存储的值（字符串或数字）

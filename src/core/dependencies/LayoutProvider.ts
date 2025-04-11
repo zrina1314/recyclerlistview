@@ -30,16 +30,16 @@ export abstract class BaseLayoutProvider {
     /** 最后使用的布局管理器实例 */
     private _lastLayoutManager?: LayoutManager;
 
-    /** 
+    /**
      * 获取指定索引项的布局类型
-     * //Given an index a provider is expected to return a view type which used to recycling choices
+     * @description Given an index a provider is expected to return a view type which used to recycling choices
      */
     public abstract getLayoutTypeForIndex(index: number): string | number;
 
     /**
      * 检查给定尺寸是否与布局提供者的期望尺寸不符
-     *    //Check if given dimension contradicts with your layout provider, return true for mismatches. Returning true will
-    * //cause a relayout to fix the discrepancy
+     * @description Check if given dimension contradicts with your layout provider, return true for mismatches. Returning true will
+     * cause a relayout to fix the discrepancy
      * @param dimension 当前尺寸
      * @param type 布局类型
      * @param index 项目索引
@@ -65,9 +65,10 @@ export abstract class BaseLayoutProvider {
     /**
      * 创建新的布局管理器实例
      * 子类必须实现此方法以提供具体的布局管理策略
-     *  //Return your layout manager, you get all required dependencies here. Also, make sure to use cachedLayouts. RLV might cache layouts and give back to
-    * //in cases of context preservation. Make sure you use them if provided.
-    * // IMP: Output of this method should be cached in lastLayoutManager. It's not required to be cached, but it's good for internal optimization.
+     * @description Return your layout manager, you get all required dependencies here. Also, make sure to use cachedLayouts.
+     * RLV might cache layouts and give back to
+     * in cases of context preservation. Make sure you use them if provided.
+     * IMP: Output of this method should be cached in lastLayoutManager. It's not required to be cached, but it's good for internal optimization.
      */
     protected abstract newLayoutManager(renderWindowSize: Dimension, isHorizontal?: boolean, cachedLayouts?: Layout[]): LayoutManager;
 }
@@ -100,7 +101,7 @@ export class LayoutProvider extends BaseLayoutProvider {
         return new WrapGridLayoutManager(this, renderWindowSize, isHorizontal, cachedLayouts);
     }
 
-    /** 
+    /**
      * 获取指定索引的布局类型
      * //Provide a type for index, something which identifies the template of view about to load
      */
@@ -110,7 +111,7 @@ export class LayoutProvider extends BaseLayoutProvider {
 
     /**
      * 设置计算后的布局尺寸
-     * 
+     *
      * @param type 布局类型
      * @param dimension 尺寸对象
      * @param index 索引

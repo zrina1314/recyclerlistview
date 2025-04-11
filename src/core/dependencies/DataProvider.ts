@@ -14,7 +14,7 @@ export abstract class BaseDataProvider {
     /** 判断两行数据是否发生变化的函数 */
     public rowHasChanged: (r1: any, r2: any) => boolean;
 
-    /** 
+    /**
      * 获取稳定ID的函数（在JS上下文中确保稳定ID是字符串）
      * In JS context make sure stable id is a string
      */

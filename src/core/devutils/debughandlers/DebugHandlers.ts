@@ -6,7 +6,7 @@ import ResizeDebugHandler from "./resize/ResizeDebugHandler";
 
 /** 调试处理器接口定义 */
 export interface DebugHandlers {
-    /** 
+    /**
      * 调整大小调试处理器
      * 可选属性，用于处理尺寸调整相关的调试
      */
