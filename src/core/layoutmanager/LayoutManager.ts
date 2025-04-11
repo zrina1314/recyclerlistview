@@ -7,9 +7,13 @@
 import { Dimension } from "../dependencies/LayoutProvider";
 /** 导入自定义错误类 */
 import CustomError from "../exceptions/CustomError";
+import { LayoutListener } from "./LayoutListenerManager";
 
 /** 布局管理器抽象基类 */
 export abstract class LayoutManager {
+    /** 布局变动的监听器 */
+    protected layoutListener: LayoutListener|undefined|null;
+
     /** 获取指定索引项的偏移位置 */
     public getOffsetForIndex(index: number): Point {
         const layouts = this.getLayouts();
@@ -81,6 +85,10 @@ export abstract class LayoutManager {
      * @description Recompute layouts from given index, compute heavy stuff should be here
      */
     public abstract relayoutFromIndex(startIndex: number, itemCount: number): void;
+
+    public  setLayoutListener(listener: LayoutListener|null): void {
+        this.layoutListener = listener; 
+    }
 }
  
 /**

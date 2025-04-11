@@ -60,6 +60,7 @@ import ScrollComponent from "../platform/reactnative/scrollcomponent/ScrollCompo
 import ViewRenderer from "../platform/reactnative/viewrenderer/ViewRenderer";
 import { DefaultJSItemAnimator as DefaultItemAnimator } from "../platform/reactnative/itemanimators/defaultjsanimator/DefaultJSItemAnimator";
 import { Platform, ScrollView } from "react-native";
+import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
 const IS_WEB = !Platform || Platform.OS === "web";
 //#endif
 
@@ -193,6 +194,9 @@ export interface RecyclerListViewProps {
      * 如果没有后续具有正确尺寸的事件，将不会渲染任何内容。
      */
     suppressBoundedSizeException?: boolean;
+
+
+    layoutListener?:LayoutListener;
 }
 
 /**
@@ -313,7 +317,8 @@ export default class RecyclerListView<P extends RecyclerListViewProps, S extends
             this._pendingScrollToOffset = offset;
         }, (index) => {
             return this.props.dataProvider.getStableId(index);
-        }, !props.disableRecycling);
+        }, !props.disableRecycling,
+        this.props.layoutListener?this.props.layoutListener:null);
 
         // 处理窗口校正配置
         if (this.props.windowCorrectionConfig) {

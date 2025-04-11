@@ -266,6 +266,7 @@ export class WrapGridLayoutManager extends LayoutManager {
             this._totalWidth = this._window.width;
             this._totalHeight += maxBound;
         }
+        this.layoutListener?.onLayoutChange({ height: this._totalHeight, width: this._totalWidth });
     }
 
     /**

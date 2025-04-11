@@ -7,6 +7,7 @@ import ViewabilityTracker, { TOnItemStatusChanged, WindowCorrection } from "./Vi
 import { ObjectUtil, Default } from "ts-object-utils";
 import TSCast from "../utils/TSCast";
 import { BaseDataProvider } from "./dependencies/DataProvider";
+import { LayoutListener } from "./layoutmanager/LayoutListenerManager";
 
 /**
  * Renderer which keeps track of recyclable items and the currently rendered items.
@@ -102,6 +103,8 @@ export default class VirtualRenderer {
     /** 是否为动画进行优化 */
     private _optimizeForAnimations: boolean = false;
 
+    private layoutListener: LayoutListener | null = null;
+
     /**
      * 构造函数，初始化虚拟渲染器
      * @param renderStackChanged 渲染堆栈变化时的回调函数
@@ -112,7 +115,8 @@ export default class VirtualRenderer {
     constructor(renderStackChanged: (renderStack: RenderStack) => void,
                 scrollOnNextUpdate: (point: Point) => void,
                 fetchStableId: StableIdProvider,
-                isRecyclingEnabled: boolean) {
+                isRecyclingEnabled: boolean,
+                layoutListener: LayoutListener | null) {
         // Keeps track of items that need to be rendered in the next render cycle
         // 跟踪下一个渲染周期需要渲染的项
         this._renderStack = {};
@@ -138,6 +142,7 @@ export default class VirtualRenderer {
         this._startKey = 0;
 
         this.onVisibleItemsChanged = null;
+        this.layoutListener = layoutListener;
     }
 
     /**
@@ -230,6 +235,7 @@ export default class VirtualRenderer {
      */
     public setLayoutManager(layoutManager: LayoutManager): void {
         this._layoutManager = layoutManager;
+        this._layoutManager.setLayoutListener(this.layoutListener);
         if (this._params) {
             this._layoutManager.relayoutFromIndex(0, this._params.itemCount);
         }
