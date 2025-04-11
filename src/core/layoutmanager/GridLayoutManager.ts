@@ -1,7 +1,8 @@
 /** 导入布局提供者 */
 import { LayoutProvider } from "./../dependencies/LayoutProvider";
 /** 导入网格布局管理器基类和布局接口 */
-import { WrapGridLayoutManager, Layout } from "./LayoutManager";
+import { Layout } from "./LayoutManager";
+import { WrapGridLayoutManager } from "./WrapGridLayoutManager";
 /** 导入尺寸接口 */
 import { Dimension } from "../dependencies/LayoutProvider";
 

@@ -6,7 +6,8 @@ import RecyclerListView, { OnRecreateParams, RecyclerListViewProps, WindowCorrec
 import BaseScrollView from "./core/scrollcomponent/BaseScrollView";
 import { BaseItemAnimator } from "./core/ItemAnimator";
 import { AutoScroll } from "./utils/AutoScroll";
-import { Layout, LayoutManager, Point, WrapGridLayoutManager } from "./core/layoutmanager/LayoutManager";
+import { Layout, LayoutManager, Point } from "./core/layoutmanager/LayoutManager";
+import { WrapGridLayoutManager } from "./core/layoutmanager/WrapGridLayoutManager";
 import { GridLayoutManager } from "./core/layoutmanager/GridLayoutManager";
 import ProgressiveListView from "./core/ProgressiveListView";
 import { DebugHandlers } from "./core/devutils/debughandlers/DebugHandlers";
